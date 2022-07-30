@@ -26,7 +26,7 @@ img.save('cur_time.jpg')
 
 # In[40]:
 
-
+"""
 import os
 
 from instauto.api.client import ApiClient
@@ -47,3 +47,4 @@ post = ps.PostFeed(
 )
 resp = client.post_post(post, 80)
 print("Success: ", resp.ok)
+"""

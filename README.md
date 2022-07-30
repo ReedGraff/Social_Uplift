@@ -38,3 +38,8 @@ In the future we will make a Python supported library in which you can install w
     <li><a href="TheReedGraff.com">Reed Graff</a></li>
     <li><a href="TheReedGraff.com">Anthony Watson</a> (By forcing Reed to finishing his history essay, which is what this library was made for)</li>
 </ul>
+<br><br>
+
+[]: # Language: markdown
+[]: # Path: README.md
+[]: # To set Requirements: pipreqs /
