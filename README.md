@@ -43,3 +43,8 @@ In the future we will make a Python supported library in which you can install w
 []: # Language: markdown
 []: # Path: README.md
 []: # To set Requirements: pipreqs /
+[]: # Heroku-cli: {
+    # procfile: clock: python cronjob.py
+    heroku ps:scale clock=1 -a social-uplift
+    heroku logs -a social-uplift --tail
+}
