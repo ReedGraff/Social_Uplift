@@ -55,6 +55,7 @@ REM: Old Snapchat API: https://gibsonsec.org/snapchat/fulldisclosure/#foreword-a
 REM: Other Old Snapchat API: https://programtalk.com/vs2/?source=python/5211/snapchat-fs/snapchat_core/friend.py
 REM: Other Attempts --> Unpack APK, and find all http requests... Then generate tokens using the prebuilt token generators... use this regex = (https:\/\/[A-Za-z0-9]*\.*snapchat)
 REM: Other Attempts --> Use Objection and delete all SSL Certificate Pinning (use Frida + Objection)... --> https://www.netspi.com/blog/technical/mobile-application-penetration-testing/four-ways-bypass-android-ssl-verification-certificate-pinning/
+REM: Other Attempts --> https://github.com/mgp25/SC-API/tree/master/src
 REM: Other Attempts --> https://github.com/sdushantha/snapchat
 REM: Other Attempts --> Public DL https://github.com/skyme5/snapchat-dl
 REM: Other Attempts --> Technique - Overwrite Packaged CA Certificate with Custom CA Certificate
