@@ -1,0 +1,67 @@
+
+
+adb shell pm list packages
+adb shell pm path com.snapchat.android
+
+REM: Pull all necessary apks
+
+adb pull path/to/apk
+
+
+apktool d base.apk
+
+
+REM: Make all necessary edits
+
+
+apktool b base
+
+
+REM: Replace base.apk file with newly built
+REM: Zipalign all apks 
+
+zipalign -p -f -v 4 base.apk base_out.apk
+
+keytool -genkey -v -keystore base.keystore -alias base -keyalg RSA -keysize 2048 -validity 10000  -storetype JKS
+apksigner sign --ks base.keystore base_out.apk
+
+
+adb install-multiple "base_out.apk" "split_config.arm64_v8a_out.apk" "split_config.en_out.apk" "split_config.xxhdpi_out.apk"
+
+
+
+
+REM: jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore base.keystore split_config.xxhdpi.apk base
+
+
+
+
+############
+
+Start for tomorrow:
+https://stackoverflow.com/questions/62730978/some-androids-apps-wont-connect-through-fiddler/62731432#62731432
+
+
+
+############
+
+REM: Get Android Architecture
+REM: adb shell getprop ro.product.cpu.abilist
+REM: use for downloading Frida-server https://frida.re/docs/android/ --> https://github.com/frida/frida/releases
+REM: https://httptoolkit.tech/blog/frida-certificate-pinning/
+REM: https://labs.nettitude.com/tutorials/using-frida-to-bypass-snapchats-certificate-pinning/
+REM: References: https://github.com/httptoolkit/frida-android-unpinning/issues/24
+REM: Old Snapchat API: https://gibsonsec.org/snapchat/fulldisclosure/#foreword-and-notes
+REM: Other Old Snapchat API: https://programtalk.com/vs2/?source=python/5211/snapchat-fs/snapchat_core/friend.py
+REM: Other Attempts --> Unpack APK, and find all http requests... Then generate tokens using the prebuilt token generators... use this regex = (https:\/\/[A-Za-z0-9]*\.*snapchat)
+REM: Other Attempts --> Use Objection and delete all SSL Certificate Pinning (use Frida + Objection)... --> https://www.netspi.com/blog/technical/mobile-application-penetration-testing/four-ways-bypass-android-ssl-verification-certificate-pinning/
+REM: Other Attempts --> https://github.com/sdushantha/snapchat
+REM: Other Attempts --> Public DL https://github.com/skyme5/snapchat-dl
+REM: Other Attempts --> Technique - Overwrite Packaged CA Certificate with Custom CA Certificate
+REM: Other Attempts --> Other Magisk Modules...
+REM: Other Attempts --> Record all http requests from android...
+
+REM: Best Future Attempt:
+REM:    - Use Snapchat App itself to validate tokens:
+REM:        - https://medium.com/@KevinPiacentini/how-ive-created-my-own-snapchat-api-s-client-with-ios-app-reverse-engineering-ebbf0442afdd
+REM:        - Hook Methods... log every single function and its output... use packetsniffing to find the submitted tokens, then use that token to search through the function output... after having scraped both of these simultaneously, and saved the output, you can find the functions responsible for generating the tokens... we can then manufacture our own tokens and use them however we please...
