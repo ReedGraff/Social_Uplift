@@ -35,22 +35,17 @@ REM: jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore base.keyst
 
 
 
-
-############
-
-Start for tomorrow:
-https://stackoverflow.com/questions/62730978/some-androids-apps-wont-connect-through-fiddler/62731432#62731432
-
-
-
-############
-
+REM: Frida Attempt
 REM: Get Android Architecture
 REM: adb shell getprop ro.product.cpu.abilist
 REM: use for downloading Frida-server https://frida.re/docs/android/ --> https://github.com/frida/frida/releases
 REM: https://httptoolkit.tech/blog/frida-certificate-pinning/
 REM: https://labs.nettitude.com/tutorials/using-frida-to-bypass-snapchats-certificate-pinning/
-REM: References: https://github.com/httptoolkit/frida-android-unpinning/issues/24
+
+REM: References: 
+REM: https://stackoverflow.com/questions/62730978/some-androids-apps-wont-connect-through-fiddler/62731432#62731432
+
+REM: https://github.com/httptoolkit/frida-android-unpinning/issues/24
 REM: Old Snapchat API: https://gibsonsec.org/snapchat/fulldisclosure/#foreword-and-notes
 REM: Other Old Snapchat API: https://programtalk.com/vs2/?source=python/5211/snapchat-fs/snapchat_core/friend.py
 REM: Other Attempts --> Unpack APK, and find all http requests... Then generate tokens using the prebuilt token generators... use this regex = (https:\/\/[A-Za-z0-9]*\.*snapchat)
