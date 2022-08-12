@@ -40,6 +40,7 @@ In the future we will make a Python supported library in which you can install w
 </ul>
 <br><br>
 
+Other info:
 []: # Language: markdown
 []: # Path: README.md
 []: # To set Requirements: pipreqs /
